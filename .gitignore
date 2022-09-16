@@ -1,2 +1,12 @@
 # build folder
-*.build
+*.build/
+
+# dart tool folder
+*.dart_tool/
+
+# flutter plugins config
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# packages
+.packages
