@@ -10,3 +10,9 @@
 
 # packages
 .packages
+
+# application build folder
+build/
+
+# native config folder of android
+.idea/

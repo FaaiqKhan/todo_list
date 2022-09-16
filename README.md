@@ -1,4 +1,4 @@
-# knowunitytodolist
+# todolist
 
 Todo list as flutter assignment
 
