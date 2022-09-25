@@ -19,7 +19,7 @@ import 'widget_test.mocks.dart';
 void main() {
   final dio = Dio(BaseOptions());
   final dioAdapter = DioAdapter(dio: dio);
-  const String api = 'https://knowunity_case_study.com';
+  const String api = 'https://todo_list.com';
   dioAdapter.onGet(
     api,
     (server) => server.reply(
