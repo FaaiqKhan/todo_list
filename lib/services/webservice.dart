@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:knowunitytodolist/models/todo_item_model.dart';
-import 'package:knowunitytodolist/utilities/utils.dart';
+import 'package:todo_list/models/todo_item_model.dart';
+import 'package:todo_list/utilities/utils.dart';
 
 class WebService {
   late final Dio _dio;

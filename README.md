@@ -1,6 +1,6 @@
-# todolist
+# todo_list
 
-Todo list as flutter assignment
+A new Flutter project.
 
 ## Getting Started
 

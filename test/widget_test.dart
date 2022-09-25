@@ -8,8 +8,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:dio/dio.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
-import 'package:knowunitytodolist/interfaces/all_todo_item_state_interface.dart';
-import 'package:knowunitytodolist/models/todo_item_model.dart';
+import 'package:todo_list/interfaces/all_todo_item_state_interface.dart';
+import 'package:todo_list/models/todo_item_model.dart';
 import 'package:mockito/annotations.dart';
 
 @GenerateNiceMocks([MockSpec<TodoItemModel>()])

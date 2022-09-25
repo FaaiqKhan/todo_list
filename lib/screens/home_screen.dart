@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:knowunitytodolist/models/todo_item_model.dart';
-import 'package:knowunitytodolist/screen_states/all_todo_item_state.dart';
-import 'package:knowunitytodolist/screen_states/global_state.dart';
-import 'package:knowunitytodolist/screens/all_todo_item_screen.dart';
-import 'package:knowunitytodolist/screens/complete_todo_item_screen.dart';
-import 'package:knowunitytodolist/screens/incomplete_todo_item_screen.dart';
-import 'package:knowunitytodolist/widgets/my_bottom_sheet.dart';
+import 'package:todo_list/models/todo_item_model.dart';
+import 'package:todo_list/screen_states/all_todo_item_state.dart';
+import 'package:todo_list/screen_states/global_state.dart';
+import 'package:todo_list/screens/all_todo_item_screen.dart';
+import 'package:todo_list/screens/complete_todo_item_screen.dart';
+import 'package:todo_list/screens/incomplete_todo_item_screen.dart';
+import 'package:todo_list/widgets/my_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {

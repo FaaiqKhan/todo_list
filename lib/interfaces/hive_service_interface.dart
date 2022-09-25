@@ -1,4 +1,4 @@
-import 'package:knowunitytodolist/models/todo_item_model.dart';
+import 'package:todo_list/models/todo_item_model.dart';
 
 abstract class HiveServiceInterface {
   Future<List<TodoItemModel>> getAllTodos();

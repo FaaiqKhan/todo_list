@@ -1,6 +1,6 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:knowunitytodolist/interfaces/hive_service_interface.dart';
-import 'package:knowunitytodolist/models/todo_item_model.dart';
+import 'package:todo_list/interfaces/hive_service_interface.dart';
+import 'package:todo_list/models/todo_item_model.dart';
 
 class HiveService implements HiveServiceInterface {
   Future<void> initHive() async {

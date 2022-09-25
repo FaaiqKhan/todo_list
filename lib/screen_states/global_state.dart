@@ -1,6 +1,6 @@
-import 'package:knowunitytodolist/screen_states/all_todo_item_state.dart';
-import 'package:knowunitytodolist/services/hive_service.dart';
-import 'package:knowunitytodolist/services/webservice.dart';
+import 'package:todo_list/screen_states/all_todo_item_state.dart';
+import 'package:todo_list/services/hive_service.dart';
+import 'package:todo_list/services/webservice.dart';
 
 class GlobalState {
   late final AllTodoItemState _allTodoItemState;

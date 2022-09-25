@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:knowunitytodolist/interfaces/all_todo_item_state_interface.dart';
-import 'package:knowunitytodolist/models/todo_item_model.dart';
-import 'package:knowunitytodolist/services/hive_service.dart';
+import 'package:todo_list/interfaces/all_todo_item_state_interface.dart';
+import 'package:todo_list/models/todo_item_model.dart';
+import 'package:todo_list/services/hive_service.dart';
 
 class AllTodoItemState extends ChangeNotifier implements AllTodoItemStateInterface {
   bool _isLoading = true;

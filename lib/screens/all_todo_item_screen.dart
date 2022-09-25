@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:knowunitytodolist/screen_states/all_todo_item_state.dart';
-import 'package:knowunitytodolist/widgets/todo_item.dart';
+import 'package:todo_list/screen_states/all_todo_item_state.dart';
+import 'package:todo_list/widgets/todo_item.dart';
 import 'package:provider/provider.dart';
 
 class AllTodoItemScreen extends StatelessWidget {

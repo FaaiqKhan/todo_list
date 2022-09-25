@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:knowunitytodolist/screen_states/global_state.dart';
-import 'package:knowunitytodolist/screens/home_screen.dart';
-import 'package:knowunitytodolist/services/hive_service.dart';
 import 'package:provider/provider.dart';
+import 'package:todo_list/screen_states/global_state.dart';
+import 'package:todo_list/screens/home_screen.dart';
+import 'package:todo_list/services/hive_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
