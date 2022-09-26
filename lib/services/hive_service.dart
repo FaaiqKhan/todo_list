@@ -17,10 +17,10 @@ class HiveService implements HiveServiceInterface {
   }
 
   @override
-  Future<bool> updateTodoStatus(int todoId, TodoItemModel updatedTodo) async {
+  Future<bool> updateTodoStatus(int index, TodoItemModel updatedTodo) async {
     try {
       final todosBox = await Hive.openBox<TodoItemModel>("allTodos");
-      await todosBox.putAt(todoId - 1, updatedTodo);
+      await todosBox.putAt(index, updatedTodo);
       await todosBox.close();
       return true;
     } catch (error) {

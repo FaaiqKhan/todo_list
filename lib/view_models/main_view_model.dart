@@ -24,12 +24,16 @@ class MainViewModel extends BaseViewModel implements AllTodoItemStateInterface {
 
   @override
   void addTodo(TodoItemModel model) {
-    final updatedModel = model
-      ..id = _todos.last.id! + 1
-      ..userId = 1;
-    _todos.add(updatedModel);
-    _incompleteTodos.add(updatedModel);
-    _hiveService.storeTodo(updatedModel);
+    if (_todos.isEmpty) {
+      model.id = 0;
+      model.userId = 1;
+    } else {
+      model.id = _todos.last.id! + 1;
+      model.userId = 1;
+    }
+    _todos.add(model);
+    _incompleteTodos.add(model);
+    _hiveService.storeTodo(model);
     notifyListeners();
   }
 
