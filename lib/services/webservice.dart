@@ -15,7 +15,12 @@ class WebService {
   Future<List<TodoItemModel>> getTodos() async {
     List<TodoItemModel> todos = [];
     try {
-      final response = await _dio.get('todos');
+      final response = await _dio.get(
+        'todos',
+        queryParameters: {
+          'userId': 1
+        },
+      );
       if (response.statusCode == 200) {
         final List rawData = response.data;
         todos.addAll(rawData.map((e) => TodoItemModel.fromJson(e)));

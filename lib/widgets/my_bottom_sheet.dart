@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_list/models/todo_item_model.dart';
 
 class MyBottomSheet extends StatelessWidget {
   MyBottomSheet(this.addTodo, {Key? key}) : super(key: key);
@@ -28,7 +29,21 @@ class MyBottomSheet extends StatelessWidget {
             ElevatedButton(
               child: const Text("Add Todo"),
               onPressed: () {
-                addTodo(context, _todoTextController.text);
+                if (_todoTextController.text.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text("Please write todo"),
+                    ),
+                  );
+                } else {
+                  addTodo(
+                    TodoItemModel(title: _todoTextController.text),
+                  );
+                  Navigator.of(context).pop();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text("Todo Added")),
+                  );
+                }
               },
             )
           ],

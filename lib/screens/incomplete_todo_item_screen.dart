@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:todo_list/screen_states/all_todo_item_state.dart';
+import 'package:stacked/stacked.dart';
+import 'package:todo_list/view_models/main_view_model.dart';
 import 'package:todo_list/widgets/todo_item.dart';
-import 'package:provider/provider.dart';
 
-class IncompleteTodoItemScreen extends StatelessWidget {
-  late final AllTodoItemState _provider;
-
-  IncompleteTodoItemScreen(BuildContext context, {Key? key}) : super(key: key) {
-    _provider = Provider.of<AllTodoItemState>(context, listen: true);
-  }
+class IncompleteTodoItemScreen extends ViewModelWidget<MainViewModel> {
+  const IncompleteTodoItemScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final incompleteTodos = _provider.getIncompleteTodos;
+  Widget build(BuildContext context, MainViewModel viewModel) {
     return ListView.builder(
-      itemCount: incompleteTodos.length,
+      itemCount: viewModel.getIncompleteTodos.length,
       itemBuilder: (_, index) {
-        return TodoItem(key: UniqueKey(), incompleteTodos[index]);
+        return TodoItem(
+          key: UniqueKey(),
+          viewModel.getIncompleteTodos[index],
+          viewModel.updateTodoState,
+        );
       },
     );
   }

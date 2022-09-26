@@ -53,9 +53,6 @@ void main() {
       ..userId = 1
       ..title = "Testing"
       ..completed = true;
-    MockAllTodoItemStateInterface().updateTodoState(
-      todoItemModel.id,
-      todoItemModel,
-    );
+    MockAllTodoItemStateInterface().updateTodoState(todoItemModel);
   });
 }

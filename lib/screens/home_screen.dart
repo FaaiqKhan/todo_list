@@ -1,36 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:todo_list/models/todo_item_model.dart';
-import 'package:todo_list/screen_states/all_todo_item_state.dart';
-import 'package:todo_list/screen_states/global_state.dart';
+import 'package:stacked/stacked.dart';
 import 'package:todo_list/screens/all_todo_item_screen.dart';
 import 'package:todo_list/screens/complete_todo_item_screen.dart';
 import 'package:todo_list/screens/incomplete_todo_item_screen.dart';
+import 'package:todo_list/view_models/main_view_model.dart';
 import 'package:todo_list/widgets/my_bottom_sheet.dart';
-import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
-  final GlobalState state;
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  HomeScreen({required this.state, Key? key}) : super(key: key);
+  late final Function addTodo;
 
-  void addTodo(BuildContext context, String todoText) {
-    if (todoText.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Please write todo"),
-        ),
-      );
-    } else {
-      state.allTodosItemState.addTodo(TodoItemModel(title: todoText));
-      Navigator.of(context).pop();
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Todo Added")
-        ),
-      );
-    }
-  }
+  HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -48,9 +29,9 @@ class HomeScreen extends StatelessWidget {
                 child: const Icon(Icons.add),
               ),
               onTap: () {
-                _scaffoldKey.currentState?.showBottomSheet((context) {
-                  return MyBottomSheet(addTodo);
-                });
+                _scaffoldKey.currentState?.showBottomSheet(
+                  (context) => MyBottomSheet(addTodo),
+                );
               },
             )
           ],
@@ -63,24 +44,28 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         body: SafeArea(
-          child: Consumer<AllTodoItemState>(
-            builder: (context, todos, child) {
+          child: ViewModelBuilder<MainViewModel>.reactive(
+            viewModelBuilder: () => MainViewModel(),
+            onModelReady: (viewModel) {
+              viewModel.initialize();
+              addTodo = viewModel.addTodo;
+            },
+            builder: (context, mainViewModel, child) {
               return Visibility(
-                visible: todos.isLoading,
-                replacement: child!,
+                visible: mainViewModel.isBusy,
+                replacement: const Padding(
+                  padding: EdgeInsets.all(12.0),
+                  child: TabBarView(
+                    children: [
+                      AllTodoItemScreen(),
+                      IncompleteTodoItemScreen(),
+                      CompletedTodoItemScreen(),
+                    ],
+                  ),
+                ),
                 child: const Center(child: CircularProgressIndicator()),
               );
             },
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: TabBarView(
-                children: [
-                  AllTodoItemScreen(context),
-                  IncompleteTodoItemScreen(context),
-                  CompletedTodoItemScreen(context),
-                ],
-              ),
-            ),
           ),
         ),
       ),

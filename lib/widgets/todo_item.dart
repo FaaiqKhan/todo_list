@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list/models/todo_item_model.dart';
-import 'package:todo_list/screen_states/all_todo_item_state.dart';
-import 'package:provider/provider.dart';
 
 class TodoItem extends StatefulWidget {
-  const TodoItem(this.model, {Key? key}) : super(key: key);
+  const TodoItem(this.model, this.updateTodoList, {Key? key}) : super(key: key);
 
+  final Function updateTodoList;
   final TodoItemModel model;
 
   @override
@@ -14,13 +13,11 @@ class TodoItem extends StatefulWidget {
 
 class _TodoItemState extends State<TodoItem> {
   late bool isTodoCompleted;
-  late AllTodoItemState _provider;
 
   @override
   initState() {
     super.initState();
     isTodoCompleted = widget.model.completed;
-    _provider = Provider.of<AllTodoItemState>(context, listen: false);
   }
 
   @override
@@ -29,13 +26,11 @@ class _TodoItemState extends State<TodoItem> {
       elevation: 2,
       color: Colors.grey.shade100,
       child: CheckboxListTile(
-        value: isTodoCompleted,
+        value: widget.model.completed,
         onChanged: (value) => setState(() {
           isTodoCompleted = value ?? false;
-          _provider.updateTodoState(
-            widget.model.id!,
-            widget.model..completed = isTodoCompleted,
-          );
+          widget.model.completed = isTodoCompleted;
+          widget.updateTodoList(widget.model);
         }),
         title: Text(
           widget.model.title,
